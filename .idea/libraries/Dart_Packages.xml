@@ -16,6 +16,20 @@
             </list>
           </value>
         </entry>
+        <entry key="built_collection">
+          <value>
+            <list>
+              <option value="/usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/built_collection-4.1.0/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="built_value">
+          <value>
+            <list>
+              <option value="/usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/built_value-6.3.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="charcode">
           <value>
             <list>
@@ -37,6 +51,13 @@
             </list>
           </value>
         </entry>
+        <entry key="fixnum">
+          <value>
+            <list>
+              <option value="/usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/fixnum-0.10.9/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="flutter">
           <value>
             <list>
@@ -48,6 +69,13 @@
           <value>
             <list>
               <option value="/usr/local/flutter/packages/flutter_test/lib" />
+            </list>
+          </value>
+        </entry>
+        <entry key="json_annotation">
+          <value>
+            <list>
+              <option value="/usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/json_annotation-1.2.0/lib" />
             </list>
           </value>
         </entry>
@@ -147,9 +175,13 @@
     <CLASSES>
       <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/async-2.0.8/lib" />
       <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/boolean_selector-1.0.4/lib" />
+      <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/built_collection-4.1.0/lib" />
+      <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/built_value-6.3.0/lib" />
       <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/charcode-1.1.2/lib" />
       <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/collection-1.14.11/lib" />
       <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/cupertino_icons-0.1.2/lib" />
+      <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/fixnum-0.10.9/lib" />
+      <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/json_annotation-1.2.0/lib" />
       <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/matcher-0.12.3+1/lib" />
       <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/meta-1.1.6/lib" />
       <root url="file:///usr/local/flutter/.pub-cache/hosted/pub.flutter-io.cn/path-1.6.2/lib" />
