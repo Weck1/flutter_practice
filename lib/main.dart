@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:flutter/services.dart';
 
 void main() => runApp(PlatformView());
 
@@ -13,89 +11,51 @@ class PlatformView extends StatelessWidget {
       theme: new ThemeData(
         primarySwatch: Colors.grey,
       ),
-      home: const MyHomePage(title: 'Platform View',),
+      home: MyHomePage(title: 'Platform View',),
     );
   }
 
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key key, this.title}) : super(key: key);
-
   final String title;
-  @override
-  State<StatefulWidget> createState() {
-    return new _MyHomePageState();
-  }
+  
+  MyHomePage({Key key, this.title}) :super(key: key);
 
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  static const MethodChannel _methodChannel = 
-      const MethodChannel('samples.flutter.io/platform_view_swift');
 
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  Future<Null> _launchPlatformCount() async {
-    final int platformCounter =
-        await _methodChannel.invokeMethod('switchView', _counter);
-    setState(() {
-      _counter =  platformCounter;
-    });
-  }
+  bool _visible =true;
 
   @override
-  Widget build(BuildContext context) => new Scaffold(
-    appBar: new AppBar(
-      title: new Text(widget.title),
-    ),
-    body: new Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        new Expanded(
-          child: new Center(
-            child: new Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                new Text(
-                  'Button tapped $_counter time${_counter == 1 ? '' : 's'}.',
-                  style: const TextStyle(fontSize: 17.0),
-                ),
-                new Padding(
-                  padding: const EdgeInsets.all(18.0),
-                  child: new RaisedButton(
-                      child: const Text('Continue in iOS view'),
-                      onPressed: _launchPlatformCount),
-                ),
-              ],
-            ),
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Test"),
+      ),
+      body: Center(
+        child: AnimatedOpacity(
+          opacity: _visible ? 1.0 : 0.0,
+          duration: Duration(milliseconds: 500),
+          child: Container(
+            width: 200.0,
+            height: 200.0,
+            color: Colors.green,
           ),
         ),
-        new Container(
-          padding: const EdgeInsets.only(bottom: 15.0, left: 5.0),
-          child: new Row(
-            children: <Widget>[
-              new Image.asset('assets/flutter-mark-square-64.png',
-                  scale: 1.5),
-              const Text(
-                'Flutter',
-                style: const TextStyle(fontSize: 30.0),
-              ),
-            ],
-          ),
-        ),
-      ],
-    ),
-    floatingActionButton: new FloatingActionButton(
-      onPressed: _incrementCounter,
-      tooltip: 'Increment',
-      child: const Icon(Icons.add),
-    ),
-  );
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            _visible = !_visible;
+          });
+        },
+        tooltip: 'Toggle Opacity',
+        child: Icon(Icons.flip),
+      ),
+    );
+  }
 }
