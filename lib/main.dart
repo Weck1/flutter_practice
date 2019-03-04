@@ -17,44 +17,40 @@ class PlatformView extends StatelessWidget {
 
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   final String title;
-  
-  MyHomePage({Key key, this.title}) :super(key: key);
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  bool _visible =true;
+  MyHomePage({Key key, this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Test"),
-      ),
-      body: Center(
-        child: AnimatedOpacity(
-          opacity: _visible ? 1.0 : 0.0,
-          duration: Duration(milliseconds: 500),
-          child: Container(
-            width: 200.0,
-            height: 200.0,
-            color: Colors.green,
-          ),
+      appBar: AppBar(title: Text(title)),
+      body: Center(child: Text('My page!')),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            DrawerHeader(
+              child: Text('Drawer Header'),
+              decoration: BoxDecoration(
+                color: Colors.yellow,
+              ),
+            ),
+            ListTile(
+              title: Text('Item 1'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: Text('Item 2'),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            )
+          ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _visible = !_visible;
-          });
-        },
-        tooltip: 'Toggle Opacity',
-        child: Icon(Icons.flip),
       ),
     );
   }
