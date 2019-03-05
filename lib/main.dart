@@ -1,41 +1,44 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(SnackBarDemo());
+void main() => runApp(MyApp());
 
-class SnackBarDemo extends StatelessWidget {
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final appTitle = 'Orientation Demo';
+
     return MaterialApp(
-      title: 'SnackBar Demo',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('SanckBar Demo'),
-        ),
-        body: SanckBarPage(),
+      title: appTitle,
+      home: OrientationList(
+        title: appTitle,
       ),
     );
   }
 }
 
-class SanckBarPage extends StatelessWidget {
+class OrientationList extends StatelessWidget {
+  final String title;
+
+  OrientationList({Key key, this.title}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: RaisedButton(
-        onPressed: () {
-          final snackBar = SnackBar(
-            content: Text('Yay! A SnackBar!'),
-            action: SnackBarAction(
-              label: 'Undo',
-              onPressed: () {
-
-              },
-            ),
+    return Scaffold(
+      appBar: AppBar(title: Text(title)),
+      body: OrientationBuilder(
+        builder: (context, orientation) {
+          return GridView.count(
+            crossAxisCount: orientation == Orientation.portrait ? 2 : 3,
+            children: List.generate(100, (index){
+              return Center(
+                child: Text(
+                  'Item $index',
+                  style:Theme.of(context).textTheme.headline,
+                ),
+              );
+            }),
           );
-
-          Scaffold.of(context).showSnackBar(snackBar);
         },
-        child: Text('Show SnackBar'),
       ),
     );
   }
