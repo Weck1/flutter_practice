@@ -1,59 +1,33 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final appName = 'Custom Themes';
-
-    return MaterialApp(
-      title: appName,
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: Colors.lightBlue[800],
-        accentColor: Colors.cyan[600],
-
-        fontFamily: 'Monsterrat',
-
-        textTheme: TextTheme(
-          headline: TextStyle(fontSize: 72.0, fontWeight: FontWeight.bold),
-          title: TextStyle(fontSize: 36.0, fontStyle: FontStyle.italic),
-          body1: TextStyle(fontSize: 14.0, fontFamily: 'Hind'),
-          
-        )
-      ),
-      home: MyHomePage(
-        title: appName,
-      ),
-    );
-  }
+void main() {
+  runApp(TabBarDemo());
 }
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-
-  MyHomePage({Key key, @required this.title}) : super(key: key);
-
+class TabBarDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text(title)),
-      body: Center(
-        child: Container(
-          color: Theme.of(context).accentColor,
-          child: Text(
-            'Text with a background color',
-            style:Theme.of(context).textTheme.title,
+    return MaterialApp(
+      home: DefaultTabController(
+        length: 3,
+        child: Scaffold(
+          appBar: AppBar(
+            bottom: TabBar(
+              tabs: <Widget>[
+                Tab(icon: Icon(Icons.directions_car)),
+                Tab(icon: Icon(Icons.directions_transit)),
+                Tab(icon: Icon(Icons.directions_bike)),
+              ],
+            ),
+            title: Text('Tabs Demo'),
           ),
-        ),
-      ),
-      floatingActionButton: Theme(
-        data: Theme.of(context).copyWith(accentColor: Colors.yellow),
-        child: FloatingActionButton(
-          onPressed: null,
-          child: Icon(Icons.add),
+          body: TabBarView(
+            children: <Widget>[
+              Icon(Icons.directions_car),
+              Icon(Icons.directions_transit),
+              Icon(Icons.directions_bike),
+            ],
+          ),
         ),
       ),
     );
