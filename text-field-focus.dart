@@ -6,56 +6,52 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Retrieve Text Input',
+      title: 'Text Field Focus',
       home: MyCustomForm(),
     );
   }
 }
 
 class MyCustomForm extends StatefulWidget {
-
   _MyCustomFormState createState() => _MyCustomFormState();
 }
 
 class _MyCustomFormState extends State<MyCustomForm> {
-  final myController =TextEditingController();
+  FocusNode myFocusNode;
 
   @override
   void initState() {
     super.initState();
 
-    myController.addListener(_printLatestValue());
+    myFocusNode =FocusNode();
   }
 
   @override
   void dispose() {
-    myController.dispose();
+    myFocusNode.dispose();
+
     super.dispose();
   }
 
-  _printLatestValue() {
-    print("Second text field: ${myController.text}");
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Retrieve Text Input'),
+        title: Text('Text Field Focus'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: <Widget>[
-            TextField(
-              onChanged: (text) {
-                print("First text field: $text");
-              },
-            ),
-            TextField(
-              controller: myController,
-            )
+            TextField(autofocus: true,),
+            TextField(focusNode: myFocusNode,),
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => FocusScope.of(context).requestFocus(myFocusNode),
+        tooltip: 'Focus Second Text Field',
+        child: Icon(Icons.edit),
       ),
     );
   }
